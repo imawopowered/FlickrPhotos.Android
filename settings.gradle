@@ -1,0 +1,2 @@
+rootProject.name='FlickerGallery'
+include ':app'
