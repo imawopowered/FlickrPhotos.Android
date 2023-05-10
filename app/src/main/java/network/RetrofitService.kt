@@ -8,7 +8,7 @@ import retrofit2.http.GET
 import utils.Constants.BASE_URL
 
 interface RetrofitService {
-    @GET("api?s=batman")
+    @GET("?method=flickr.photos.search&api_key=9a95c68a9c6ec61104cd3967dcbb8bd3&tags=snail&page=1&format=json&nojsoncallback=1")
     fun getAllPhotos(): Call<PhotosList>
 
     companion object {
