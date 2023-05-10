@@ -1,6 +1,6 @@
 package network
 
-import com.mindera.flickergallery.model.PhotosList
+import com.mindera.flickergallery.model.Photo
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -9,7 +9,7 @@ import utils.Constants.BASE_URL
 
 interface RetrofitService {
     @GET("?method=flickr.photos.search&api_key=9a95c68a9c6ec61104cd3967dcbb8bd3&tags=snail&page=1&format=json&nojsoncallback=1")
-    fun getAllPhotos(): Call<List<PhotosList>>
+    fun getAllPhotos(): Call<List<Photo>>
 
     companion object {
 

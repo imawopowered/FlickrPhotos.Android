@@ -1,6 +1,6 @@
 package com.mindera.flickergallery.model
 
-data class PhotosList(
+data class PhotosJson(
     val photos: Photos,
     val stat: String
 )
