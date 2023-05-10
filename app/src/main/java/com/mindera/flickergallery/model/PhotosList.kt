@@ -1,4 +1,5 @@
 package model
 import com.google.gson.annotations.SerializedName
+import com.mindera.flickergallery.model.Photos
 
-data class PhotosList(@SerializedName("Search") val mList : List<Photo>)
+data class PhotosList(val mList : List<Photos>)

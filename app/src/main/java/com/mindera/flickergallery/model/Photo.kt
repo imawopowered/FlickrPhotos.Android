@@ -1,10 +1,13 @@
-package model
-
-import com.google.gson.annotations.SerializedName
+package com.mindera.flickergallery.model
 
 data class Photo(
-    @SerializedName("Title") val title: String,
-    @SerializedName("Poster") val poster: String,
-    val imdbID: String,
-    @SerializedName("Year") val year: String
+    val farm: Int,
+    val id: String,
+    val isfamily: Int,
+    val isfriend: Int,
+    val ispublic: Int,
+    val owner: String,
+    val secret: String,
+    val server: String,
+    val title: String
 )
