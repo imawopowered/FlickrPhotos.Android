@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.photosList.observe(this, Observer {
             Log.d(TAG, "$it")
         })
+
         viewModel.getAllPhotos()
     }
 
