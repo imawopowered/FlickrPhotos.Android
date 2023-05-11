@@ -1,7 +1,8 @@
-package com.mindera.flickergallery
+package com.mindera.flickergallery.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.mindera.flickergallery.R
 
 class MainActivity : AppCompatActivity() {
 
