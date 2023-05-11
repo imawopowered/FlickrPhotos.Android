@@ -76,9 +76,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun loadPhotos(items: List<PhotoToDisplay>) {
-        photosAdapter = PhotosAdapter(items, this, { item, position ->
-            // item...
-        })
+        photosAdapter = PhotosAdapter(items, this) { item, position ->
+
+        }
 
         photosRecyclerView?.adapter = photosAdapter
     }
