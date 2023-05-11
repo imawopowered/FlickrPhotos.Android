@@ -28,14 +28,13 @@ class PhotosViewModel(private val repository: GetPhotosRepository): ViewModel() 
                 if(response?.body() != null) {
                     photoToDisplayLiveDataJson.postValue(response.body())
 
-                    Log.d(TAG, "${response.body()}")
+                    //Log.d(TAG, "${response.body()}")
+
                     Log.d(TAG, "Mapping for ${response.body()?.photos?.photo?.size} items...")
                     Log.d(TAG, "Mapping for ${photoToDisplayLiveDataJson.value?.photos?.photo?.size} items...")
 
                     val photoToDisplayList = response.body()?.photos?.photo?.map { photo: Photo ->
                     //val photoToDisplayList = photoToDisplayLiveDataJson.value?.photos?.photo?.map { photo: Photo ->
-
-                        Log.d(TAG, photo.title)
 
                         PhotoToDisplay(
                             id = photo.id,
