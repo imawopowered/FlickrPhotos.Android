@@ -53,6 +53,12 @@ class MainActivity : AppCompatActivity() {
 
         photosViewModel.getAllPhotos()
 
+        sizesViewModel.sizesLiveDataList.observe(this, Observer { items ->
+            for (item in items) {
+                Log.d(TAG, "${item.label}")
+            }
+        })
+
         photosRecyclerView= binding.photosRecyclerView
         photosRecyclerView?.layoutManager = GridLayoutManager(this, 2)
     }

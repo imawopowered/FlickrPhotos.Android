@@ -12,7 +12,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
-    val photoToDisplayLiveDataJson = MutableLiveData<PhotosJson>()
+    private val photoToDisplayLiveDataJson = MutableLiveData<PhotosJson>()
     val photoToDisplayLiveDataList = MutableLiveData<List<PhotoToDisplay>>()
 
     fun getAllPhotos(): MutableLiveData<List<PhotoToDisplay>> {

@@ -12,13 +12,11 @@ import viewmodel.PhotosViewModel
 
 class SizesViewModel(private val repository: SizesRepository) {
     private val sizesLiveDataJson = MutableLiveData<SizesJson>()
-    private val sizesLiveDataList = MutableLiveData<List<Size>>()
+    val sizesLiveDataList = MutableLiveData<List<Size>>()
 
     fun getAllSizes(photoId: String): MutableLiveData<List<Size>> {
         val response = repository.getAllSizes(photoId)
         val errorMessage = MutableLiveData<String>()
-
-        Log.d(TAG, "Getting sizes...")
 
         response.enqueue( object : Callback<SizesJson>{
             override fun onResponse(call: Call<SizesJson>?, response: Response<SizesJson>?) {
