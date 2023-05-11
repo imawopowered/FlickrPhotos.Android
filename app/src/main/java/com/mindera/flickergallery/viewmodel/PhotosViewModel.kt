@@ -19,6 +19,7 @@ class PhotosViewModel(private val repository: GetPhotosRepository): ViewModel() 
                 url = ""
             )
         }
+
         photoToDisplayLiveDataList.postValue(photoToDisplayList)
         return photoToDisplayLiveDataList
     }
