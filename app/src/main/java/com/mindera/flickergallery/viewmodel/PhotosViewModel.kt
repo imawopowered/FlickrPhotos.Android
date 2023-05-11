@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mindera.flickergallery.model.Photo
-import com.mindera.flickergallery.model.PhotoToDisplay
 import com.mindera.flickergallery.model.PhotosJson
 import repository.PhotosRepository
 import retrofit2.Call
@@ -20,9 +19,9 @@ class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
         val errorMessage = MutableLiveData<String>()
 
         response.enqueue( object : Callback<PhotosJson> {
-            override fun onResponse(call: Call<PhotosJson>?, response: Response<PhotosJson>?) {
+            override fun onResponse(call: Call<PhotosJson>, response: Response<PhotosJson>) {
 
-                if(response?.body() != null) {
+                if(response.body() != null) {
                     photoToDisplayLiveDataJson.postValue(response.body())
                     photoToDisplayLiveDataList.postValue(response.body()?.photos?.photo)
 
@@ -37,16 +36,12 @@ class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
                             url = ""
                         )
                     }*/
-                } else {
-                    Log.d(TAG, "BODY IS NULL!")
                 }
             }
 
             override fun onFailure(call: Call<PhotosJson>, t: Throwable) {
-                if (t != null) {
-                    errorMessage.postValue(t.message)
-                    Log.d(TAG, "EROARE: ${t.message}")
-                }
+                errorMessage.postValue(t.message)
+                Log.d(TAG, "EROARE: ${t.message}")
             }
         })
 

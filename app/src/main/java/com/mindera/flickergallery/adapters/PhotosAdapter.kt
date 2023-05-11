@@ -28,8 +28,8 @@ class PhotosAdapter(
 
     override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
 
-        var item: PhotoToDisplay = photosList[position]
-        holder?.bind(item, position, clickListener)
+        val item: PhotoToDisplay = photosList[position]
+        holder.bind(item, position, clickListener)
     }
 
     override fun getItemCount(): Int {
@@ -38,29 +38,23 @@ class PhotosAdapter(
 
     class PhotosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val image: ImageView = itemView!!.findViewById(R.id.image)
+        val image: ImageView = itemView.findViewById(R.id.image)
         val title: TextView = itemView.findViewById(R.id.title)
-        val url: TextView = itemView.findViewById(R.id.url)
         val size: TextView = itemView.findViewById(R.id.size)
 
         fun bind(item: PhotoToDisplay, position: Int, clickListener: (PhotoToDisplay, Int) -> Unit) {
 
             Glide.with(itemView)
-                .load("${item.url}")
+                .load(item.source)
                 .transform(CenterCrop())
                 .into(image)
 
             title.text = item.title
             size.text = item.label
-            url.text = item.url
 
             itemView.setOnClickListener {
                 clickListener(item, position)
             }
-        }
-
-        fun clearAnimation() {
-            itemView.clearAnimation()
         }
     }
 }

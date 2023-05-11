@@ -1,14 +1,12 @@
 package com.mindera.flickergallery.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mindera.flickergallery.adapters.PhotosAdapter
 import com.mindera.flickergallery.databinding.ActivityMainBinding
-import com.mindera.flickergallery.model.Photo
 import com.mindera.flickergallery.model.PhotoToDisplay
 import com.mindera.flickergallery.repository.SizesRepository
 import com.mindera.flickergallery.viewmodel.SizesViewModel
@@ -40,34 +38,36 @@ class MainActivity : AppCompatActivity() {
         photosViewModel = PhotosViewModel(PhotosRepository(photosRetrofitService))
         sizesViewModel = SizesViewModel(SizesRepository(sizeRetrofitService))
 
-        var photoToDisplay: MutableList<PhotoToDisplay> = mutableListOf<PhotoToDisplay>()
+        val photoToDisplay: MutableList<PhotoToDisplay> = mutableListOf<PhotoToDisplay>()
 
-        photosViewModel.photoToDisplayLiveDataList.observe(this, Observer { items ->
+        photosViewModel.photoToDisplayLiveDataList.observe(this) { items ->
             if (items != null) {
 
                 for (item in items) {
-                    //Log.d(TAG, "ITEMS: ${item.title}")
                     sizesViewModel.getAllSizes(item.id)
                 }
             }
-        })
+        }
 
-        sizesViewModel.sizesLiveDataList.observe(this, Observer { items ->
+        sizesViewModel.sizesLiveDataList.observe(this) { items ->
             if (items != null) {
                 for (item in items) {
-                    Log.d(TAG, "ITEMS: ${item.label}")
+                    Log.d(TAG, "Item size type: ${item.label}")
 
-                    photoToDisplay.add(PhotoToDisplay(
-                        id = "",
-                        label = item.label,
-                        title = "",
-                        url = item.url
-                    ))
+                    if (item.label.equals("Large Square")) {
+                        photoToDisplay.add(
+                            PhotoToDisplay(
+                                label = item.label,
+                                title = "",
+                                source = item.source
+                            )
+                        )
+                    }
                 }
 
                 loadPhotos(photoToDisplay)
             }
-        })
+        }
 
         photosViewModel.getAllPhotos()
 
