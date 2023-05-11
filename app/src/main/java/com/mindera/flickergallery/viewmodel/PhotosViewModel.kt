@@ -3,14 +3,24 @@ package viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mindera.flickergallery.model.Photo
-import repository.PhotosRepository
+import com.mindera.flickergallery.model.PhotoToDisplay
+import repository.GetPhotosRepository
 
-class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
-    val photosList = MutableLiveData<List<Photo>>()
+class PhotosViewModel(private val repository: GetPhotosRepository): ViewModel() {
+    private val photoToDisplayLiveDataList = MutableLiveData<List<PhotoToDisplay>>()
 
-    fun getAllPhotos(): MutableLiveData<List<Photo>> {
+    fun getAllPhotos(): MutableLiveData<List<PhotoToDisplay>> {
         val response = repository.getAllPhotos()
-        photosList.postValue(response.photos.photo)
-        return photosList
+        val photoToDisplayList = response.photos.photo.map {
+            photo: Photo -> PhotoToDisplay(
+                id = photo.id,
+                title = photo.title,
+                largeSquare = false,
+                url = ""
+            )
+        }
+
+        photoToDisplayLiveDataList.postValue(photoToDisplayList)
+        return photoToDisplayLiveDataList
     }
 }
