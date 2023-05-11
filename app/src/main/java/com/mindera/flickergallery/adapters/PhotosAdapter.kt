@@ -9,17 +9,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.request.RequestOptions
 import com.mindera.flickergallery.R
 import com.mindera.flickergallery.model.PhotoToDisplay
-import com.mindera.flickergallery.model.Size
-import com.mindera.flickergallery.model.Sizes
 
 class PhotosAdapter(
+    private val photosList: List<PhotoToDisplay>,
     private val context: Context,
     private val clickListener: (PhotoToDisplay, Int) -> Unit) : RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder>() {
-
-    var photosList : List<PhotoToDisplay> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
         val layoutIdForListItem = R.layout.layout_photos
@@ -43,11 +39,6 @@ class PhotosAdapter(
 
     override fun getItemCount(): Int {
         return photosList.size
-    }
-
-    fun setphotosListItems(photosList: List<PhotoToDisplay>){
-        this.photosList = photosList;
-        notifyDataSetChanged()
     }
 
     class PhotosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

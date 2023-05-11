@@ -7,7 +7,7 @@ import com.mindera.flickergallery.model.PhotoToDisplay
 import repository.GetPhotosRepository
 
 class PhotosViewModel(private val repository: GetPhotosRepository): ViewModel() {
-    private val photoToDisplayLiveDataList = MutableLiveData<List<PhotoToDisplay>>()
+    val photoToDisplayLiveDataList = MutableLiveData<List<PhotoToDisplay>>()
 
     fun getAllPhotos(): MutableLiveData<List<PhotoToDisplay>> {
         val response = repository.getAllPhotos()
@@ -15,7 +15,7 @@ class PhotosViewModel(private val repository: GetPhotosRepository): ViewModel() 
             photo: Photo -> PhotoToDisplay(
                 id = photo.id,
                 title = photo.title,
-                largeSquare = false,
+                size = "",
                 url = ""
             )
         }
