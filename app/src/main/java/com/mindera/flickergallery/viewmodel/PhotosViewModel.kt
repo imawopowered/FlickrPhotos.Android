@@ -13,9 +13,9 @@ import retrofit2.Response
 
 class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
     private val photoToDisplayLiveDataJson = MutableLiveData<PhotosJson>()
-    val photoToDisplayLiveDataList = MutableLiveData<List<PhotoToDisplay>>()
+    val photoToDisplayLiveDataList = MutableLiveData<List<Photo>>()
 
-    fun getAllPhotos(): MutableLiveData<List<PhotoToDisplay>> {
+    fun getAllPhotos(): MutableLiveData<List<Photo>> {
         val response = repository.getAllPhotos()
         val errorMessage = MutableLiveData<String>()
 
@@ -24,20 +24,19 @@ class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
 
                 if(response?.body() != null) {
                     photoToDisplayLiveDataJson.postValue(response.body())
+                    photoToDisplayLiveDataList.postValue(response.body()?.photos?.photo)
 
                     Log.d(TAG, "${response.body()}")
                     Log.d(TAG, "Mapping for ${response.body()?.photos?.photo?.size} items...")
 
-                    val photoToDisplayList = response.body()?.photos?.photo?.map { photo: Photo ->
+                    /*val photoToDisplayList = response.body()?.photos?.photo?.map { photo: Photo ->
                         PhotoToDisplay(
                             id = photo.id,
                             title = photo.title,
                             size = "",
                             url = ""
                         )
-                    }
-
-                    photoToDisplayLiveDataList.postValue(photoToDisplayList)
+                    }*/
                 } else {
                     Log.d(TAG, "BODY IS NULL!")
                 }

@@ -1,10 +1,12 @@
 package com.mindera.flickergallery.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Size(
-    val height: Int,
-    val label: String,
-    val media: String,
-    val source: String,
-    val url: String,
-    val width: Int
+    @SerializedName("height") val height: Int,
+    @SerializedName("label") val label: String,
+    @SerializedName("media") val media: String,
+    @SerializedName("source") val source: String,
+    @SerializedName("url") val url: String,
+    @SerializedName("width") val width: Int
 )

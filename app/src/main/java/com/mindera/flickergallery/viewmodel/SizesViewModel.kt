@@ -24,6 +24,9 @@ class SizesViewModel(private val repository: SizesRepository) {
 
                 if(response?.body() != null) {
                     sizesLiveDataJson.postValue(response.body())
+                    sizesLiveDataList.postValue(response.body()?.sizes?.size)
+
+                    //Log.d(TAG, "SIZE: ${response?.body()?.sizes?.size?}")
                 }
             }
 
@@ -33,9 +36,6 @@ class SizesViewModel(private val repository: SizesRepository) {
                 }
             }
         })
-
-        val sizesList = sizesLiveDataJson.value?.sizes?.size
-        sizesLiveDataList.postValue(sizesList)
 
         return sizesLiveDataList
     }

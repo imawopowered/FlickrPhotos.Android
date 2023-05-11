@@ -30,11 +30,6 @@ class PhotosAdapter(
 
         var item: PhotoToDisplay = photosList[position]
         holder?.bind(item, position, clickListener)
-
-        /*holder.title.text = photosList.get(position).title
-        Glide.with(context).load(photosList.get(position).url)
-            .apply(RequestOptions().centerCrop())
-            .into(holder.image)*/
     }
 
     override fun getItemCount(): Int {
