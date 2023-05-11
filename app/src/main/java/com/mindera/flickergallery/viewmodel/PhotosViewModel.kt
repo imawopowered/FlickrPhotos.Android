@@ -26,13 +26,9 @@ class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
                     photoToDisplayLiveDataJson.postValue(response.body())
 
                     Log.d(TAG, "${response.body()}")
-
                     Log.d(TAG, "Mapping for ${response.body()?.photos?.photo?.size} items...")
-                    Log.d(TAG, "Mapping for ${photoToDisplayLiveDataJson.value?.photos?.photo?.size} items...")
 
                     val photoToDisplayList = response.body()?.photos?.photo?.map { photo: Photo ->
-                    //val photoToDisplayList = photoToDisplayLiveDataJson.value?.photos?.photo?.map { photo: Photo ->
-
                         PhotoToDisplay(
                             id = photo.id,
                             title = photo.title,

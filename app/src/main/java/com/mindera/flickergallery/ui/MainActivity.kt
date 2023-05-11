@@ -54,8 +54,10 @@ class MainActivity : AppCompatActivity() {
         photosViewModel.getAllPhotos()
 
         sizesViewModel.sizesLiveDataList.observe(this, Observer { items ->
-            for (item in items) {
-                Log.d(TAG, "${item.label}")
+            if (items != null) {
+                for (item in items) {
+                    Log.d(TAG, "${item.label}")
+                }
             }
         })
 
