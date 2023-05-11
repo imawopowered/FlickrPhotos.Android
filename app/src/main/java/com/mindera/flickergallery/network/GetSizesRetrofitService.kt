@@ -1,28 +1,28 @@
 package network
 
-import com.mindera.flickergallery.model.PhotosJson
+import com.mindera.flickergallery.model.SizesJson
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import utils.Constants.BASE_URL_GET_SIZES
 
-interface GetPhotoSizesRetrofitService {
+interface GetSizesRetrofitService {
     @GET("&api_key=9a95c68a9c6ec61104cd3967dcbb8bd3&photo_id=52882160209&format=json&nojsoncallback=1")
-    fun getAllSizes(): PhotosJson
+    fun getAllSizes(): SizesJson
 
     companion object {
 
-        var retrofitService: GetPhotosRetrofitService? = null
+        var retrofitService: GetSizesRetrofitService? = null
 
         //Create the Retrofit service instance using the retrofit.
-        fun getInstance(): GetPhotosRetrofitService {
+        fun getInstance(): GetSizesRetrofitService {
 
             if (retrofitService == null) {
                 val retrofit = Retrofit.Builder()
                     .baseUrl(BASE_URL_GET_SIZES)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
-                retrofitService = retrofit.create(GetPhotosRetrofitService::class.java)
+                retrofitService = retrofit.create(GetSizesRetrofitService::class.java)
             }
             return retrofitService!!
         }
