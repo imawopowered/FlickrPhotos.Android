@@ -3,15 +3,13 @@ package com.mindera.flickergallery.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mindera.flickergallery.R
 import com.mindera.flickergallery.adapters.PhotosAdapter
 import com.mindera.flickergallery.databinding.ActivityMainBinding
 import com.mindera.flickergallery.model.PhotoToDisplay
-import network.GetPhotosRetrofitService
+import network.PhotosRetrofitService
 import repository.GetPhotosRepository
 import viewmodel.PhotosViewModel
 
@@ -20,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private var _binding:ActivityMainBinding? = null
     private val binding get() = _binding!!
 
-    private val getPhotosRetrofitService = GetPhotosRetrofitService.getInstance()
+    private val getPhotosRetrofitService = PhotosRetrofitService.getInstance()
     lateinit var photosViewModel: PhotosViewModel
     lateinit var photosAdapter: PhotosAdapter
 
@@ -33,9 +31,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         photosViewModel = PhotosViewModel(GetPhotosRepository(getPhotosRetrofitService))
-        photosViewModel.photoToDisplayLiveDataList.observe(this, Observer {
-            Log.d(TAG, "$it")
-            loadPhotos(it)
+        photosViewModel.photoToDisplayLiveDataList.observe(this, Observer { items ->
+            if (items != null) {
+                Log.d(TAG, "ITEMS: $items")
+                loadPhotos(items)
+            }
         })
 
         photosViewModel.getAllPhotos()

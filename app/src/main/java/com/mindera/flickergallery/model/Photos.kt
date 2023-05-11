@@ -1,9 +1,11 @@
 package com.mindera.flickergallery.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Photos(
-    val page: Int,
-    val pages: Int,
-    val perpage: Int,
-    val photo: List<Photo>,
-    val total: Int
+    @SerializedName("page") val page: Int,
+    @SerializedName("pages") val pages: Int,
+    @SerializedName("perpage") val perpage: Int,
+    @SerializedName("photo") val photo: List<Photo>,
+    @SerializedName("total") val total: Int
 )
