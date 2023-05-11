@@ -1,0 +1,80 @@
+package com.mindera.flickergallery.adapters
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.request.RequestOptions
+import com.mindera.flickergallery.R
+import com.mindera.flickergallery.model.PhotoToDisplay
+import com.mindera.flickergallery.model.Size
+import com.mindera.flickergallery.model.Sizes
+
+class PhotosAdapter(
+    private val context: Context,
+    private val clickListener: (PhotoToDisplay, Int) -> Unit) : RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder>() {
+
+    var photosList : List<PhotoToDisplay> = listOf()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
+        val layoutIdForListItem = R.layout.layout_photos
+        val inflater = LayoutInflater.from(context)
+        val shouldAttach = false
+
+        val view = inflater.inflate(layoutIdForListItem, parent, shouldAttach)
+        return PhotosViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
+
+        var item: PhotoToDisplay = photosList[position]
+        holder?.bind(item, position, clickListener)
+
+        /*holder.title.text = photosList.get(position).title
+        Glide.with(context).load(photosList.get(position).url)
+            .apply(RequestOptions().centerCrop())
+            .into(holder.image)*/
+    }
+
+    override fun getItemCount(): Int {
+        return photosList.size
+    }
+
+    fun setphotosListItems(photosList: List<PhotoToDisplay>){
+        this.photosList = photosList;
+        notifyDataSetChanged()
+    }
+
+    class PhotosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val image: ImageView = itemView!!.findViewById(R.id.image)
+        val title: TextView = itemView.findViewById(R.id.title)
+        val url: TextView = itemView.findViewById(R.id.url)
+        val size: TextView = itemView.findViewById(R.id.size)
+
+        fun bind(item: PhotoToDisplay, position: Int, clickListener: (PhotoToDisplay, Int) -> Unit) {
+
+            Glide.with(itemView)
+                .load("${item.url}")
+                .transform(CenterCrop())
+                .into(image)
+
+            title.text = item.title
+            size.text = item.size
+            url.text = item.url
+
+            itemView.setOnClickListener {
+                clickListener(item, position)
+            }
+        }
+
+        fun clearAnimation() {
+            itemView.clearAnimation()
+        }
+    }
+}
