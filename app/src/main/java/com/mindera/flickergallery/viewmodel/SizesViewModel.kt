@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.mindera.flickergallery.model.Size
 import com.mindera.flickergallery.model.SizesJson
 import com.mindera.flickergallery.repository.SizesRepository
+import com.mindera.flickergallery.ui.MainActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,8 +22,9 @@ class SizesViewModel(private val repository: SizesRepository) {
         response.enqueue( object : Callback<SizesJson>{
             override fun onResponse(call: Call<SizesJson>?, response: Response<SizesJson>?) {
 
-                if(response?.body() != null)
+                if(response?.body() != null) {
                     sizesLiveDataJson.postValue(response.body())
+                }
             }
 
             override fun onFailure(call: Call<SizesJson>, t: Throwable) {

@@ -41,9 +41,9 @@ class MainActivity : AppCompatActivity() {
 
         photosViewModel.photoToDisplayLiveDataList.observe(this, Observer { items ->
             if (items != null) {
-                Log.d(TAG, "ITEMS: $items")
 
                 for (item in items) {
+                    //Log.d(TAG, "ITEMS: ${item.title}")
                     sizesViewModel.getAllSizes(item.id)
                 }
 
@@ -51,15 +51,15 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        photosViewModel.getAllPhotos()
-
         sizesViewModel.sizesLiveDataList.observe(this, Observer { items ->
             if (items != null) {
                 for (item in items) {
-                    Log.d(TAG, "${item.label}")
+                    Log.d(TAG, "ITEMS: ${item.label}")
                 }
             }
         })
+
+        photosViewModel.getAllPhotos()
 
         photosRecyclerView= binding.photosRecyclerView
         photosRecyclerView?.layoutManager = GridLayoutManager(this, 2)
