@@ -29,6 +29,7 @@ class PhotosViewModel(private val repository: GetPhotosRepository): ViewModel() 
                     photoToDisplayLiveDataJson.postValue(response.body())
 
                     Log.d(TAG, "${response.body()}")
+
                     Log.d(TAG, "Mapping for ${response.body()?.photos?.photo?.size} items...")
                     Log.d(TAG, "Mapping for ${photoToDisplayLiveDataJson.value?.photos?.photo?.size} items...")
 
