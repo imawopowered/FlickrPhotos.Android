@@ -41,7 +41,6 @@ class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
 
             override fun onFailure(call: Call<PhotosJson>, t: Throwable) {
                 errorMessage.postValue(t.message)
-                Log.d(TAG, "EROARE: ${t.message}")
             }
         })
 
