@@ -5,16 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mindera.flickergallery.model.Photo
 import com.mindera.flickergallery.model.PhotoToDisplay
-import com.mindera.flickergallery.model.Photos
 import com.mindera.flickergallery.model.PhotosJson
-import com.mindera.flickergallery.model.SizesJson
-import com.mindera.flickergallery.ui.MainActivity
-import repository.GetPhotosRepository
+import repository.PhotosRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PhotosViewModel(private val repository: GetPhotosRepository): ViewModel() {
+class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
     val photoToDisplayLiveDataJson = MutableLiveData<PhotosJson>()
     val photoToDisplayLiveDataList = MutableLiveData<List<PhotoToDisplay>>()
 
