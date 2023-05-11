@@ -8,23 +8,23 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import utils.Constants.BASE_URL_GET_SIZES
 
-interface GetSizesRetrofitService {
+interface SizesRetrofitService {
     @GET("&api_key=9a95c68a9c6ec61104cd3967dcbb8bd3&{photo_id}&format=json&nojsoncallback=1")
-    fun getAllSizes(@Query("photo_id") photoId: String): SizesJson
+    fun getAllSizes(@Query("photo_id") photoId: String): Call<SizesJson>
 
     companion object {
 
-        var retrofitService: GetSizesRetrofitService? = null
+        var retrofitService: SizesRetrofitService? = null
 
         //Create the Retrofit service instance using the retrofit.
-        fun getInstance(): GetSizesRetrofitService {
+        fun getInstance(): SizesRetrofitService {
 
             if (retrofitService == null) {
                 val retrofit = Retrofit.Builder()
                     .baseUrl(BASE_URL_GET_SIZES)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
-                retrofitService = retrofit.create(GetSizesRetrofitService::class.java)
+                retrofitService = retrofit.create(SizesRetrofitService::class.java)
             }
             return retrofitService!!
         }

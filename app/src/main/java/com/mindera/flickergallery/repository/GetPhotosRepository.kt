@@ -1,7 +1,7 @@
 package repository
 
-import network.GetPhotosRetrofitService
+import network.PhotosRetrofitService
 
-class GetPhotosRepository(private val retrofitService: GetPhotosRetrofitService) {
+class GetPhotosRepository(private val retrofitService: PhotosRetrofitService) {
     fun getAllPhotos() = retrofitService.getAllPhotos()
 }

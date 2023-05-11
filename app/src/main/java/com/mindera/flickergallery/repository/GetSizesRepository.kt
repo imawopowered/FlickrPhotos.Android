@@ -1,7 +1,7 @@
 package com.mindera.flickergallery.repository
 
-import network.GetSizesRetrofitService
+import network.SizesRetrofitService
 
-class GetSizesRepository(private val retrofitService: GetSizesRetrofitService) {
+class GetSizesRepository(private val retrofitService: SizesRetrofitService) {
     fun getAllSizes() = retrofitService.getAllSizes("52882160209")
 }
