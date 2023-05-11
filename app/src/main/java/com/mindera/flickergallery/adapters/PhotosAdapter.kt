@@ -51,7 +51,7 @@ class PhotosAdapter(
                 .into(image)
 
             title.text = item.title
-            size.text = item.size
+            size.text = item.label
             url.text = item.url
 
             itemView.setOnClickListener {

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mindera.flickergallery.adapters.PhotosAdapter
 import com.mindera.flickergallery.databinding.ActivityMainBinding
+import com.mindera.flickergallery.model.Photo
 import com.mindera.flickergallery.model.PhotoToDisplay
 import com.mindera.flickergallery.repository.SizesRepository
 import com.mindera.flickergallery.viewmodel.SizesViewModel
@@ -39,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         photosViewModel = PhotosViewModel(PhotosRepository(photosRetrofitService))
         sizesViewModel = SizesViewModel(SizesRepository(sizeRetrofitService))
 
+        var photoToDisplay: MutableList<PhotoToDisplay> = mutableListOf<PhotoToDisplay>()
+
         photosViewModel.photoToDisplayLiveDataList.observe(this, Observer { items ->
             if (items != null) {
 
@@ -46,8 +49,6 @@ class MainActivity : AppCompatActivity() {
                     //Log.d(TAG, "ITEMS: ${item.title}")
                     sizesViewModel.getAllSizes(item.id)
                 }
-
-                loadPhotos(items)
             }
         })
 
@@ -55,7 +56,16 @@ class MainActivity : AppCompatActivity() {
             if (items != null) {
                 for (item in items) {
                     Log.d(TAG, "ITEMS: ${item.label}")
+
+                    photoToDisplay.add(PhotoToDisplay(
+                        id = "",
+                        label = item.label,
+                        title = "",
+                        url = item.url
+                    ))
                 }
+
+                loadPhotos(photoToDisplay)
             }
         })
 
