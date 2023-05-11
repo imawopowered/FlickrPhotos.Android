@@ -3,8 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdk 31
-    buildToolsVersion '30.0.2'
+    compileSdk 33
+    buildToolsVersion '33.0.0'
 
     defaultConfig {
         applicationId "com.mindera.flickergallery"
@@ -21,14 +21,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
-
-    viewBinding {
-        enabled = true
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
