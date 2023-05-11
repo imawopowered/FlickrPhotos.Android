@@ -9,7 +9,7 @@ import utils.Constants
 
 interface GetPhotosRetrofitService {
     @GET("&api_key=9a95c68a9c6ec61104cd3967dcbb8bd3&tags=snail&page=1&format=json&nojsoncallback=1")
-    fun getAllPhotos(): Call<PhotosJson>
+    fun getAllPhotos(): PhotosJson
 
     companion object {
 

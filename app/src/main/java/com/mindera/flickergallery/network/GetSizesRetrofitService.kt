@@ -10,7 +10,7 @@ import utils.Constants.BASE_URL_GET_SIZES
 
 interface GetSizesRetrofitService {
     @GET("&api_key=9a95c68a9c6ec61104cd3967dcbb8bd3&{photo_id}&format=json&nojsoncallback=1")
-    fun getAllSizes(@Query("photo_id") photoId: String): Call<SizesJson>
+    fun getAllSizes(@Query("photo_id") photoId: String): SizesJson
 
     companion object {
 
