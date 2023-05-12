@@ -19,6 +19,7 @@ import network.PhotosRetrofitService
 import network.SizesRetrofitService
 import repository.PhotosRepository
 import viewmodel.PhotosViewModel
+
 class MainActivity : AppCompatActivity() {
 
     private var _binding:ActivityMainBinding? = null
