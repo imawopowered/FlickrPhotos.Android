@@ -36,6 +36,7 @@ class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
                             url = ""
                         )
                     }*/
+
                 }
             }
 
