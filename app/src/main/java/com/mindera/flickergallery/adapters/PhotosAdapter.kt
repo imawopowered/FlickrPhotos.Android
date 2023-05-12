@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -39,8 +38,6 @@ class PhotosAdapter(
     class PhotosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val image: ImageView = itemView.findViewById(R.id.image)
-        val title: TextView = itemView.findViewById(R.id.title)
-        val size: TextView = itemView.findViewById(R.id.size)
 
         fun bind(item: PhotoToDisplay, position: Int, clickListener: (PhotoToDisplay, Int) -> Unit) {
 
@@ -48,9 +45,6 @@ class PhotosAdapter(
                 .load(item.source)
                 .transform(CenterCrop())
                 .into(image)
-
-            title.text = item.title
-            size.text = item.label
 
             itemView.setOnClickListener {
                 clickListener(item, position)
