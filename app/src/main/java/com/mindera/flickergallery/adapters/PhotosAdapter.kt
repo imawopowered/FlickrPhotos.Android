@@ -34,7 +34,6 @@ class PhotosAdapter(
     override fun getItemCount(): Int {
         return photosList.size
     }
-
     class PhotosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val image: ImageView = itemView.findViewById(R.id.image)
