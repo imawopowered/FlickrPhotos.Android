@@ -65,15 +65,13 @@ class MainActivity : AppCompatActivity() {
                 for (item in items) {
                     Log.d(TAG, "Item size type: ${item.label}")
 
-                    if (item.label.equals("Large Square")) {
-                        photoToDisplay.add(
-                            AllPhotos(
-                                label = item.label,
-                                title = "",
-                                source = item.source
-                            )
+                    photoToDisplay.add(
+                        AllPhotos(
+                            label = item.label,
+                            title = "",
+                            source = item.source
                         )
-                    }
+                    )
                 }
 
                 loadPhotos(photoToDisplay)
