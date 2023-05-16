@@ -1,4 +1,4 @@
-package com.mindera.flickergallery.helpers
+package com.adamanti.flickrphotos.helpers
 
 import android.content.Context
 import android.graphics.drawable.Drawable

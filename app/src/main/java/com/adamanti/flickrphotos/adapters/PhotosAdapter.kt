@@ -1,4 +1,4 @@
-package com.mindera.flickergallery.adapters
+package com.adamanti.flickrphotos.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.adamanti.flickrphotos.R
+import com.adamanti.flickrphotos.model.AllPhotos
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.mindera.flickergallery.R
-import com.mindera.flickergallery.model.PhotoToDisplay
 
 class PhotosAdapter(
-    private val photosList: List<PhotoToDisplay>,
+    private val photosList: List<AllPhotos>,
     private val context: Context,
-    private val clickListener: (PhotoToDisplay, Int) -> Unit) : RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder>() {
+    private val clickListener: (AllPhotos, Int) -> Unit) : RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
         val layoutIdForListItem = R.layout.layout_photos
@@ -27,7 +27,7 @@ class PhotosAdapter(
 
     override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
 
-        val item: PhotoToDisplay = photosList[position]
+        val item: AllPhotos = photosList[position]
         holder.bind(item, position, clickListener)
     }
 
@@ -39,7 +39,7 @@ class PhotosAdapter(
 
         val image: ImageView = itemView.findViewById(R.id.image)
 
-        fun bind(item: PhotoToDisplay, position: Int, clickListener: (PhotoToDisplay, Int) -> Unit) {
+        fun bind(item: AllPhotos, position: Int, clickListener: (AllPhotos, Int) -> Unit) {
 
             Glide.with(itemView)
                 .load(item.source)

@@ -1,6 +1,6 @@
 package network
 
-import com.mindera.flickergallery.model.PhotosJson
+import com.adamanti.flickrphotos.model.PhotosJson
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -1,4 +1,4 @@
-package com.mindera.flickergallery.model
+package com.adamanti.flickrphotos.model
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,8 +1,7 @@
-package com.mindera.flickergallery
+package com.adamanti.flickrphotos
 
 import network.PhotosRetrofitService
 import org.junit.Assert.assertEquals
-import org.junit.Rule
 import org.junit.Test
 import repository.PhotosRepository
 import viewmodel.PhotosViewModel
@@ -19,9 +18,9 @@ class TestViewModel {
 
     @Test
     fun testPhotoViewModel() {
-        viewModel.photoToDisplayLiveDataList.observeForever {}
+        viewModel.allPhotosLiveDataList.observeForever {}
         viewModel.getAllPhotos()
 
-        assertEquals(0, viewModel.photoToDisplayLiveDataList.value?.size)
+        assertEquals(0, viewModel.allPhotosLiveDataList.value?.size)
     }
 }

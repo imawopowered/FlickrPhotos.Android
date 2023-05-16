@@ -1,10 +1,10 @@
-package com.mindera.flickergallery.viewmodel
+package com.adamanti.flickrphotos.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.mindera.flickergallery.model.Size
-import com.mindera.flickergallery.model.SizesJson
-import com.mindera.flickergallery.repository.SizesRepository
+import com.adamanti.flickrphotos.model.Size
+import com.adamanti.flickrphotos.model.SizesJson
+import com.adamanti.flickrphotos.repository.SizesRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

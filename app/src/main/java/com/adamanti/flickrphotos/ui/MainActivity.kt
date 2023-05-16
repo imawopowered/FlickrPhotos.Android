@@ -1,4 +1,4 @@
-package com.mindera.flickergallery.ui
+package com.adamanti.flickrphotos.ui
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -6,15 +6,15 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.adamanti.flickrphotos.adapters.PhotosAdapter
+import com.adamanti.flickrphotos.databinding.ActivityMainBinding
+import com.adamanti.flickrphotos.helpers.Utilities
+import com.adamanti.flickrphotos.model.AllPhotos
+import com.adamanti.flickrphotos.repository.SizesRepository
+import com.adamanti.flickrphotos.viewmodel.SizesViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.mindera.flickergallery.adapters.PhotosAdapter
-import com.mindera.flickergallery.databinding.ActivityMainBinding
-import com.mindera.flickergallery.helpers.Utilities
-import com.mindera.flickergallery.model.PhotoToDisplay
-import com.mindera.flickergallery.repository.SizesRepository
-import com.mindera.flickergallery.viewmodel.SizesViewModel
 import network.PhotosRetrofitService
 import network.SizesRetrofitService
 import repository.PhotosRepository
@@ -22,7 +22,7 @@ import viewmodel.PhotosViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private var _binding:ActivityMainBinding? = null
+    private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
     private val photosRetrofitService = PhotosRetrofitService.getInstance()
@@ -40,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setTitle("Adamanti LAB: Flickr Photos")
+
         val decorView = window.decorView
         val windowBackground = decorView.background
         Utilities.setupBlurView(this, binding.rootView, windowBackground, binding.blurView, 24F)
@@ -47,9 +49,9 @@ class MainActivity : AppCompatActivity() {
         photosViewModel = PhotosViewModel(PhotosRepository(photosRetrofitService))
         sizesViewModel = SizesViewModel(SizesRepository(sizeRetrofitService))
 
-        val photoToDisplay: MutableList<PhotoToDisplay> = mutableListOf<PhotoToDisplay>()
+        val photoToDisplay: MutableList<AllPhotos> = mutableListOf<AllPhotos>()
 
-        photosViewModel.photoToDisplayLiveDataList.observe(this) { items ->
+        photosViewModel.allPhotosLiveDataList.observe(this) { items ->
             if (items != null) {
 
                 for (item in items) {
@@ -65,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
                     if (item.label.equals("Large Square")) {
                         photoToDisplay.add(
-                            PhotoToDisplay(
+                            AllPhotos(
                                 label = item.label,
                                 title = "",
                                 source = item.source
@@ -84,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         photosRecyclerView?.layoutManager = GridLayoutManager(this, 2)
     }
 
-    fun loadPhotos(items: List<PhotoToDisplay>) {
+    fun loadPhotos(items: List<AllPhotos>) {
         photosAdapter = PhotosAdapter(items, this) { item, position ->
 
             Glide.with(this@MainActivity)

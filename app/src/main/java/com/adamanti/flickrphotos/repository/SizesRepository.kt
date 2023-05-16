@@ -1,4 +1,4 @@
-package com.mindera.flickergallery.repository
+package com.adamanti.flickrphotos.repository
 
 import network.SizesRetrofitService
 

@@ -1,6 +1,6 @@
-package com.mindera.flickergallery.model
+package com.adamanti.flickrphotos.model
 
-class PhotoToDisplay (
+class AllPhotos (
     val label: String,
     val title: String,
     val source: String

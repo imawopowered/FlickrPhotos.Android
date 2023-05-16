@@ -5,7 +5,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.mindera.flickergallery"
+        applicationId "com.adamanti.flickrphotos"
         minSdkVersion 23
         targetSdkVersion 31
         versionCode 1
@@ -21,7 +21,7 @@ android {
         }
     }
 
-    namespace 'com.mindera.flickergallery'
+    namespace 'com.adamanti.flickrphotos'
 
     buildFeatures {
         viewBinding true
