@@ -1,4 +1,4 @@
-package com.adamanti.flickrphotos.model
+package com.imawo.flickrphotos.model
 
 import com.google.gson.annotations.SerializedName
 

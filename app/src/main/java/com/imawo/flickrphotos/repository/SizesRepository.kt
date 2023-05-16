@@ -1,4 +1,4 @@
-package com.adamanti.flickrphotos.repository
+package com.imawo.flickrphotos.repository
 
 import network.SizesRetrofitService
 

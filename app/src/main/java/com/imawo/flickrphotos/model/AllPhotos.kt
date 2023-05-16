@@ -1,4 +1,4 @@
-package com.adamanti.flickrphotos.model
+package com.imawo.flickrphotos.model
 
 class AllPhotos (
     val label: String,

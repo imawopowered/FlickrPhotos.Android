@@ -5,7 +5,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.adamanti.flickrphotos"
+        applicationId "com.imawo.flickrphotos"
         minSdkVersion 23
         targetSdkVersion 31
         versionCode 1
@@ -21,7 +21,7 @@ android {
         }
     }
 
-    namespace 'com.adamanti.flickrphotos'
+    namespace 'com.imawo.flickrphotos'
 
     buildFeatures {
         viewBinding true

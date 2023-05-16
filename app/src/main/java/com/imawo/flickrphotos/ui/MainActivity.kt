@@ -1,4 +1,4 @@
-package com.adamanti.flickrphotos.ui
+package com.imawo.flickrphotos.ui
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -6,12 +6,12 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.adamanti.flickrphotos.adapters.PhotosAdapter
-import com.adamanti.flickrphotos.databinding.ActivityMainBinding
-import com.adamanti.flickrphotos.helpers.Utilities
-import com.adamanti.flickrphotos.model.AllPhotos
-import com.adamanti.flickrphotos.repository.SizesRepository
-import com.adamanti.flickrphotos.viewmodel.SizesViewModel
+import com.imawo.flickrphotos.adapters.PhotosAdapter
+import com.imawo.flickrphotos.databinding.ActivityMainBinding
+import com.imawo.flickrphotos.helpers.Utilities
+import com.imawo.flickrphotos.model.AllPhotos
+import com.imawo.flickrphotos.repository.SizesRepository
+import com.imawo.flickrphotos.viewmodel.SizesViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -65,15 +65,13 @@ class MainActivity : AppCompatActivity() {
                 for (item in items) {
                     Log.d(TAG, "Item size type: ${item.label}")
 
-                    if (item.label.equals("Large Square")) {
-                        photoToDisplay.add(
-                            AllPhotos(
-                                label = item.label,
-                                title = "",
-                                source = item.source
-                            )
+                    photoToDisplay.add(
+                        AllPhotos(
+                            label = item.label,
+                            title = "",
+                            source = item.source
                         )
-                    }
+                    )
                 }
 
                 loadPhotos(photoToDisplay)

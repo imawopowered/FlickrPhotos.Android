@@ -3,8 +3,8 @@ package viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.adamanti.flickrphotos.model.Photo
-import com.adamanti.flickrphotos.model.PhotosJson
+import com.imawo.flickrphotos.model.Photo
+import com.imawo.flickrphotos.model.PhotosJson
 import repository.PhotosRepository
 import retrofit2.Call
 import retrofit2.Callback

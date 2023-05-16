@@ -1,10 +1,10 @@
-package com.adamanti.flickrphotos.viewmodel
+package com.imawo.flickrphotos.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.adamanti.flickrphotos.model.Size
-import com.adamanti.flickrphotos.model.SizesJson
-import com.adamanti.flickrphotos.repository.SizesRepository
+import com.imawo.flickrphotos.model.Size
+import com.imawo.flickrphotos.model.SizesJson
+import com.imawo.flickrphotos.repository.SizesRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

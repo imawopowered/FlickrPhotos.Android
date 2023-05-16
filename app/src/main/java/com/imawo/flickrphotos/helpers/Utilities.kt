@@ -1,4 +1,4 @@
-package com.adamanti.flickrphotos.helpers
+package com.imawo.flickrphotos.helpers
 
 import android.content.Context
 import android.graphics.drawable.Drawable

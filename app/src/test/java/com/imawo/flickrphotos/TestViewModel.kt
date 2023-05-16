@@ -1,4 +1,4 @@
-package com.adamanti.flickrphotos
+package com.imawo.flickrphotos
 
 import network.PhotosRetrofitService
 import org.junit.Assert.assertEquals

@@ -1,6 +1,6 @@
 package network
 
-import com.adamanti.flickrphotos.model.SizesJson
+import com.imawo.flickrphotos.model.SizesJson
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
