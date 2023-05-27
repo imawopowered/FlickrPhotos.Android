@@ -11,10 +11,15 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
-    private val allPhotosLiveDataJson = MutableLiveData<PhotosJson>()
-    val allPhotosLiveDataList = MutableLiveData<List<Photo>>()
+    private var _allPhotosLiveDataJson = MutableLiveData<PhotosJson>()
+    val allPhotosLiveDataJson
+        get() = _allPhotosLiveDataJson
 
-    fun getAllPhotos(): MutableLiveData<List<Photo>> {
+    private var _allPhotosLiveDataList = MutableLiveData<List<Photo>>()
+    val  allPhotosLiveDataList
+        get() = _allPhotosLiveDataList
+
+    fun getAllPhotos() {
         val response = repository.getAllPhotos()
         val errorMessage = MutableLiveData<String>()
 
@@ -22,8 +27,8 @@ class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
             override fun onResponse(call: Call<PhotosJson>, response: Response<PhotosJson>) {
 
                 if(response.body() != null) {
-                    allPhotosLiveDataJson.postValue(response.body())
-                    allPhotosLiveDataList.postValue(response.body()?.photos?.photo)
+                    _allPhotosLiveDataJson.postValue(response.body())
+                    _allPhotosLiveDataList.postValue(response.body()?.photos?.photo)
 
                     Log.d(TAG, "${response.body()}")
                     Log.d(TAG, "Mapping for ${response.body()?.photos?.photo?.size} items...")
@@ -34,8 +39,6 @@ class PhotosViewModel(private val repository: PhotosRepository): ViewModel() {
                 errorMessage.postValue(t.message)
             }
         })
-
-        return allPhotosLiveDataList
     }
 
     companion object {

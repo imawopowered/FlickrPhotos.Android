@@ -6,8 +6,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.imawo.flickrphotos.adapters.PhotosAdapter
 import com.imawo.flickrphotos.databinding.ActivityMainBinding
+import com.imawo.flickrphotos.adapters.PhotosAdapter
 import com.imawo.flickrphotos.helpers.Utilities
 import com.imawo.flickrphotos.model.AllPhotos
 import com.imawo.flickrphotos.repository.SizesRepository
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setTitle("Adamanti LAB: Flickr Photos")
+        setTitle("IMAWO LAB: Flickr Photos")
 
         val decorView = window.decorView
         val windowBackground = decorView.background

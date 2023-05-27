@@ -10,10 +10,16 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SizesViewModel(private val repository: SizesRepository) {
-    private val sizesLiveDataJson = MutableLiveData<SizesJson>()
-    val sizesLiveDataList = MutableLiveData<List<Size>>()
+    private var _sizesLiveDataJson = MutableLiveData<SizesJson>()
+    val sizesLiveDataJson
+        get() = _sizesLiveDataJson
 
-    fun getAllSizes(photoId: String): MutableLiveData<List<Size>> {
+    private var _sizesLiveDataList = MutableLiveData<List<Size>>()
+    val sizesLiveDataList
+        get() = _sizesLiveDataList
+
+    fun getAllSizes(photoId: String) {
+
         val response = repository.getAllSizes(photoId)
         val errorMessage = MutableLiveData<String>()
 
@@ -21,8 +27,8 @@ class SizesViewModel(private val repository: SizesRepository) {
             override fun onResponse(call: Call<SizesJson>, response: Response<SizesJson>) {
 
                 if(response.body() != null) {
-                    sizesLiveDataJson.postValue(response.body())
-                    sizesLiveDataList.postValue(response.body()?.sizes?.size)
+                    _sizesLiveDataJson.postValue(response.body())
+                    _sizesLiveDataList.postValue(response.body()?.sizes?.size)
 
                     Log.d(TAG, "${response.body()}")
                 }
@@ -32,8 +38,6 @@ class SizesViewModel(private val repository: SizesRepository) {
                 errorMessage.postValue(t.message)
             }
         })
-
-        return sizesLiveDataList
     }
 
     companion object {
