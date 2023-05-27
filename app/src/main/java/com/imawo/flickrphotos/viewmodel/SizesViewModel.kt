@@ -2,6 +2,7 @@ package com.imawo.flickrphotos.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.imawo.flickrphotos.model.Size
 import com.imawo.flickrphotos.model.SizesJson
@@ -11,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SizesViewModel(private val repository: SizesRepository) {
+class SizesViewModel(private val repository: SizesRepository): ViewModel() {
     private var _sizesLiveDataJson = MutableLiveData<SizesJson>()
     val sizesLiveDataJson
         get() = _sizesLiveDataJson
