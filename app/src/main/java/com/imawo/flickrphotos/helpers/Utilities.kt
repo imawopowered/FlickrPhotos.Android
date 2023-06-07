@@ -14,10 +14,12 @@ object Utilities {
         blurView: BlurView,
         radius: Float
     ) {
-        blurView.setupWith(rootView!!)
-            .windowBackground(windowBackground)
-            .blurAlgorithm(RenderScriptBlur(context))
-            .blurRadius(radius)
-            .setHasFixedTransformationMatrix(true)
+        rootView?.let {
+            blurView.setupWith(it)
+                .windowBackground(windowBackground)
+                .blurAlgorithm(RenderScriptBlur(context))
+                .blurRadius(radius)
+                .setHasFixedTransformationMatrix(true)
+        }
     }
 }
