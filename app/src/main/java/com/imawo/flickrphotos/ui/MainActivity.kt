@@ -52,9 +52,8 @@ class MainActivity : AppCompatActivity() {
         val photoToDisplay: MutableList<AllPhotos> = mutableListOf<AllPhotos>()
 
         photosViewModel.allPhotosLiveDataList.observe(this) { items ->
-            if (items != null) {
-
-                for (item in items) {
+            items?.let {
+                for (item in it) {
                     sizesViewModel.getAllSizes(item.id)
                 }
             }
